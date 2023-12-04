@@ -83,7 +83,7 @@ function setup(){
              let water = new Water (x,y)
              waterArr.push(water)
           }else if(matrix[y][x] == 5){
-          let fire = new fire(x,y)
+          let fire = new Fire(x,y)
           fireArr.push(fire)
           }
         }
