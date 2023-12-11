@@ -1,4 +1,5 @@
-class Water extends LivingCreature{
+let LivingCreature = require("./LivingCreature")
+module.exports = class Water extends LivingCreature{
     constructor(x, y) {
         super(x,y)
         this.multiply = 0
@@ -52,8 +53,8 @@ class Water extends LivingCreature{
 
 
      eat(){
-            let foods = this.chooseCell(1, 2, 3, 4)
-            let food = random(foods)
+            let foods = super.chooseCell(1, 2, 3, 4)
+            let food = foods(math.floor(Math.random()+foods.length))
 
             if (food) {
                 this.energy += 5
@@ -101,8 +102,8 @@ class Water extends LivingCreature{
 
         }
         move(){
-            let emptyCells = this.chooseCell(0)
-            let newCell = random(emptyCells)
+            let emptyCells = super.chooseCell(0)
+            let newCell = emptyCell(math.floor(Math.random()+emptyCell.length))
         
             if(newCell){
               this.energy--
