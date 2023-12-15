@@ -60,7 +60,7 @@ module.exports = class Fire extends LivingCreature{
 
      eat(){
             let foods = super.chooseCell(1, 2, 3, 4, 5)
-            let food = foods(math.floor(Math.random()+foods.length))
+            let food = foods[math.floor(Math.random()+foods.length)]
 
             if (food) {
                 this.energy += 5
@@ -115,7 +115,7 @@ module.exports = class Fire extends LivingCreature{
         }
         move(){
             let emptyCells = super.chooseCell(0)
-            let newCell = emptyCell(math.floor(Math.random()+emptyCells.length))
+            let newCell = emptyCell[math.floor(Math.random()+emptyCells.length)]
         
             if(newCell){
               this.energy--

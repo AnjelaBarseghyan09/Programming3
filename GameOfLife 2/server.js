@@ -74,7 +74,7 @@ function matrixGenerator(matrixSize, grassCount, grassEaterCount, predatorCount,
 }
 
 
-let matrix = matrixGenerator(40, 35, 20, 15, 30, 35)
+ matrix = matrixGenerator(40, 35, 20, 15, 30, 35)
 
 
 io.sockets.emit("send matrix", matrix)
@@ -96,3 +96,60 @@ io.sockets.emit("send matrix", matrix)
  let Predator = require("./predator")
  let Fire = require("./fire")
  let Water = require("./water")
+
+ function createObject(matrix){
+    for(let y = 0; y<matrix.length; y++){
+        for(let x = 0; x<matrix[y].length; x++){
+         if(matrix[y][x]==1){
+          let grass = new Grass(x,y)
+          grassArr.push(grass)
+         }else if(matrix[y][x]==2){
+            let great = new GrassEater(x, y)
+            grassEaterArr.push(great)
+         }else if(matrix[y][x] == 3){
+             let pred = new Predator(x,y)
+             predatorArr.push(pred)
+         }else if(matrix[y][x] == 4){
+            let water = new Water (x,y)
+            waterArr.push(water)
+         }else if(matrix[y][x] == 5){
+         let fire = new Fire(x,y)
+         fireArr.push(fire)
+         }
+       }
+   }
+   io.sockets.emit("send matrix", matrix)
+ }
+
+ function game(){
+    for(let i in grassArr){
+        grassArr[i].mul()
+    }
+ 
+    for(let i in grassEaterArr){
+        grassEaterArr[i].eat()
+    }
+    for(let i in predatorArr){
+   predatorArr[i].eat()
+    }
+    for(let i in waterArr){
+     waterArr[i].eat()
+    }
+    for(let i in fireArr)[
+     fireArr[i].eat()
+    ]
+
+    io.sockets.emit("send matrix", matrix)
+ }
+setInterval(game, 500)
+
+// 
+io.on("connection", function (){
+    createObject(matrix)
+})
+
+
+
+
+
+ 
