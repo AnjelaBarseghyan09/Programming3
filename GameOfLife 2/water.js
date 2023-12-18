@@ -53,8 +53,8 @@ module.exports = class Water extends LivingCreature{
 
 
      eat(){
-            let foods = super.chooseCell(1, 2, 3, 4)
-            let food = foods(math.floor(Math.random()+foods.length))
+            let foods = this.chooseCell(1, 2, 3, 4)
+            let food = foods[Math.floor(Math.random()*foods.length)]
 
             if (food) {
                 this.energy += 5
@@ -102,8 +102,8 @@ module.exports = class Water extends LivingCreature{
 
         }
         move(){
-            let emptyCells = super.chooseCell(0)
-            let newCell = emptyCell(math.floor(Math.random()+emptyCell.length))
+            let emptyCells =  this.chooseCell(0)
+            let newCell = emptyCells[Math.floor(Math.random()*emptyCells.length)]
         
             if(newCell){
               this.energy--
