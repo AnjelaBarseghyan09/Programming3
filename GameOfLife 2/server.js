@@ -160,6 +160,74 @@ function AddGrass(){
 
     
 }
+function AddGrassEater(){
+    for(let i = 0; i < 7; i++){
+        let x = Math.floor(Math.random() * matrix.length)
+        let y = Math.floor(Math.random() * matrix.length)
+
+        if(matrix[y][x]==0){
+   matrix[y][x]=2
+
+   let grassEater = new GrassEater(x,y)
+   grassEaterArr.push(grassEater)
+        }
+
+    }
+    io.sockets.emit("send matrix",matrix)
+
+    
+}
+function AddPredator(){
+    for(let i = 0; i < 7; i++){
+        let x = Math.floor(Math.random() * matrix.length)
+        let y = Math.floor(Math.random() * matrix.length)
+
+        if(matrix[y][x]==0){
+   matrix[y][x]=3
+
+   let predator = new Predator(x,y)
+   predatorArr.push(predator)
+        }
+
+    }
+    io.sockets.emit("send matrix",matrix)
+
+    
+}
+function AddFire(){
+    for(let i = 0; i < 7; i++){
+        let x = Math.floor(Math.random() * matrix.length)
+        let y = Math.floor(Math.random() * matrix.length)
+
+        if(matrix[y][x]==0){
+   matrix[y][x]=4
+
+   let fire = new Fire(x,y)
+   fireArr.push(fire)
+        }
+
+    }
+    io.sockets.emit("send matrix",matrix)
+
+    
+}
+function AddWater(){
+    for(let i = 0; i < 7; i++){
+        let x = Math.floor(Math.random() * matrix.length)
+        let y = Math.floor(Math.random() * matrix.length)
+
+        if(matrix[y][x]==0){
+   matrix[y][x]=5
+
+   let water = new Water(x,y)
+   waterArr.push(water)
+        }
+
+    }
+    io.sockets.emit("send matrix",matrix)
+
+    
+}
 
 // ////statistics
 var statistics = {
@@ -183,6 +251,26 @@ setInterval(function(){
 io.on("connection", function (socket){
     createObject(matrix)
     socket.on("addGrass",AddGrass)
+})
+
+io.on("connection", function (socket){
+    createObject(matrix)
+    socket.on("addGrassEaster",AddGrassEater)
+})
+
+io.on("connection", function (socket){
+    createObject(matrix)
+    socket.on("addPredator",AddPredator)
+})
+
+io.on("connection", function (socket){
+    createObject(matrix)
+    socket.on("addFire",AddFire)
+})
+
+io.on("connection", function (socket){
+    createObject(matrix)
+    socket.on("addWater",AddWater)
 })
 
 

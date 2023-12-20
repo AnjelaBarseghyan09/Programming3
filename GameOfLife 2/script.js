@@ -44,7 +44,25 @@ setInterval(function(){
     socket.on("send matrix", nkarel)
   },300)
 
+
+
   function AddGrass(){
       socket.emit("addGrass")
   }
+
+  function AddGrassEater(){
+    socket.emit("addGrassEater")
+}
+
+function AddPredator(){
+    socket.emit("addPredator")
+}
+
+function AddFire(){
+    socket.emit("addFire")
+}
+
+function AddWater(){
+    socket.emit("addWater")
+}
      

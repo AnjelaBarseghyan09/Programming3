@@ -8,11 +8,18 @@
     <script src="socket.io/socket.io.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/p5@1.7.0/lib/p5.js"></script>
     <script src="script.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <h1>GameOfLife 2</h1>
 
 </head>
 <body>
 
 
-    <button class = "grass" onclick="AddGrass()">Add Grass</button>
+    <button class = "grass" onclick="AddGrass()", style="background-color:green">Add Grass</button><br>
+    <button class = "grassEater" onclick="AddGrassEater()", style="background-color: yellow;">Add GrassEater</button><br>
+    <button class = "predator" onclick="AddPredator()", style="background-color: red;">Add Predator</button><br>
+    <button class = "fire" onclick="AddFire()", style="background-color: orangered;">Add Fire</button><br>
+    <button class = "water" onclick="AddWater()", style="background-color:rgb(0, 119, 255);">Add Water</button><br>
+
 </body>
 </html>
