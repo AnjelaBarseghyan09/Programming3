@@ -59,7 +59,7 @@ module.exports = class Fire extends LivingCreature {
 
 
     eat() {
-        let foods = this.chooseCell(1, 2, 3, 4, 5)
+        let foods = this.chooseCell(1, 2, 3, 4)
         let food = foods[Math.floor(Math.random() * foods.length)]
 
         if (food) {

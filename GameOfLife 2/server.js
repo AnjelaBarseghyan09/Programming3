@@ -164,6 +164,21 @@ function Autumn() {
     io.sockets.emit("Autumn", weather);
 }
 
+function kill() {
+    grassArr = [];
+    grassEaterArr = [];
+    grassEaterArr = [];
+    grassEaterEaterArr = [];
+    fireArr = [];
+    waterArr = [];
+    for (var y = 0; y < matrix.length; y++) {
+        for (var x = 0; x < matrix[y].length; x++) {
+            matrix[y][x] = 0;
+        }
+    }
+    io.sockets.emit("send matrix", matrix);
+}
+
 //Add buttons
 function AddGrass() {
     for (let i = 0; i < 7; i++) {
@@ -194,7 +209,6 @@ function AddGrassEater() {
 
             let grassEater = new GrassEater(x, y)
             grassEaterArr.push(grassEater)
-            console.log(grassEaterArr.length,"grEat");
         }
 
     }
@@ -225,7 +239,7 @@ function AddFire() {
         let y = Math.floor(Math.random() * matrix.length)
 
         if (matrix[y][x] == 0) {
-            matrix[y][x] = 4
+            matrix[y][x] = 5
 
             let fire = new Fire(x, y)
             fireArr.push(fire)
@@ -242,7 +256,7 @@ function AddWater() {
         let y = Math.floor(Math.random() * matrix.length)
 
         if (matrix[y][x] == 0) {
-            matrix[y][x] = 5
+            matrix[y][x] = 4
 
             let water = new Water(x, y)
             waterArr.push(water)
@@ -266,7 +280,7 @@ setInterval(function () {
     statistics.water = waterArr.length
     statistics.fire = fireArr.length
     fs.writeFile("statistics.json", JSON.stringify(statistics), function (err) {
-        // console.log("game of life statistics");
+         console.log("game of life statistics");
     })
 }, 1000)
 
@@ -281,6 +295,7 @@ io.on("connection", function (socket) {
     socket.on("winter", Winter);
     socket.on("addGrass", AddGrass)
     socket.on("addGrassEater", AddGrassEater)
+    socket.on("KillAll", kill);
     socket.on("addPredator", AddPredator)
     socket.on("addFire", AddFire)
     socket.on("addWater", AddWater)
